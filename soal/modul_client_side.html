@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module Client Side - Archery Pop Game</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 100vh;
+      background-color: #2c3e50;
+      padding: 20px 0;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .sidebar-title {
+      color: #fff;
+      font-size: 1.2rem;
+      padding: 0 20px 20px;
+      border-bottom: 1px solid #3d5166;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      color: #bdc3c7;
+      text-decoration: none;
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+
+    .sidebar-nav a:hover {
+      background-color: #34495e;
+      color: #fff;
+    }
+
+    .sidebar-nav a.active {
+      background-color: #3498db;
+      color: #fff;
+      border-left-color: #fff;
+    }
+
+    .sidebar-nav .sub-item {
+      padding-left: 40px;
+      font-size: 0.85rem;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 280px;
+      padding: 40px 60px;
+      max-width: 1200px;
+    }
+
+    section {
+      background: #fff;
+      padding: 30px 40px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #2c3e50;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #2c3e50;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #3498db;
+    }
+
+    h3 {
+      color: #34495e;
+      font-size: 1.3rem;
+      margin: 25px 0 15px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin: 15px 0 15px 30px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #7f8c8d;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    /* Code Block */
+    pre {
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      padding: 20px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 15px 0;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9rem;
+    }
+
+    code {
+      background-color: #ecf0f1;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.9rem;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #3498db;
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* Highlight Box */
+    .highlight-box {
+      background-color: #e8f4fc;
+      border-left: 4px solid #3498db;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .warning-box {
+      background-color: #fef3e2;
+      border-left: 4px solid #f39c12;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h2 class="sidebar-title">📄 Module Client Side</h2>
+    <div class="sidebar-nav">
+      <a href="#contents">Contents</a>
+      <a href="#introduction">Introduction</a>
+      <a href="#description">Description of Projects</a>
+      <a href="#design" class="sub-item">Design & Layout</a>
+      <a href="#functionalities">Game Functionalities</a>
+      <a href="#menu" class="sub-item">Menu & Setup</a>
+      <a href="#cursor" class="sub-item">Cursor & Aiming</a>
+      <a href="#targets" class="sub-item">Targets</a>
+      <a href="#scoring" class="sub-item">Scoring System</a>
+      <a href="#lives" class="sub-item">Lives System</a>
+      <a href="#timer" class="sub-item">Timer</a>
+      <a href="#gameover" class="sub-item">Game Over</a>
+      <a href="#pause" class="sub-item">Pause Feature</a>
+      <a href="#requirements" class="sub-item">Additional Requirements</a>
+      <a href="#instructions">Instructions for Competitors</a>
+      <a href="#examples">Example Screenshots</a>
+    </div>
+  </nav>
+
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Contents -->
+    <section id="contents">
+      <h1>MODULE CLIENT SIDE</h1>
+      <p class="subtitle">Archery Pop Game Documentation</p>
+      <h2>Contents</h2>
+      <p>This module has the following files:</p>
+      <ul>
+        <li><strong>MODULE_CLIENT_SIDE.doc</strong> - Documentation file</li>
+        <li><strong>MODULE_CLIENT_SIDE_MEDIA.zip</strong> - Media assets package</li>
+      </ul>
+    </section>
+
+    <!-- Introduction -->
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>
+        In recent years internet has become our basic daily source and needs, enabling the dissemination of information
+        in an inexhaustible content and interaction. Games have gained a prominent role in nowadays computer usage,
+        allowing people to get access to entertainment from any places.
+      </p>
+      <p>
+        You are asked to develop a game called <strong>Archery Pop</strong> using HTML and CSS and develop client-side
+        programming using JavaScript and its open source libraries. Some media files are available to you in a zip file.
+        You can create more media and modify anything in the media if you want.
+      </p>
+      <div class="highlight-box">
+        <strong>Resolution Requirement:</strong> Your game needs to be developed in a tablet resolution (960x600 pixels).
+        In bigger resolution, the game must be centred in the screen both horizontally and vertically.
+      </div>
+    </section>
+
+    <!-- Description -->
+    <section id="description">
+      <h2>Description of Projects and Tasks</h2>
+      <p>
+        This is a module of <strong>4 hours</strong>. Your first 2 hours must be used to create the design of the game
+        in three PNG images and the initial layout using HTML/CSS. Your layout should follow the design that you created.
+        The final 2 hours you will create the functionality of game using JavaScript that allows the game to work
+        correctly in different web browsers.
+      </p>
+
+      <h3>Archery Pop Game Elements</h3>
+      <ul>
+        <li>Game Title</li>
+        <li>Board area 960 x 600 pixels</li>
+        <li>Custom cursor (scope/crosshair image)</li>
+        <li>Falling targets (archery board images)</li>
+        <li>Player score display</li>
+        <li>Total time / countdown timer</li>
+        <li>Lives/hearts indicator</li>
+      </ul>
+
+      <!-- Design Sub-section -->
+      <div id="design">
+        <h3>Design and Initial Layout</h3>
+        <p>Deliver at least <strong>3 PNG image files</strong> that present:</p>
+        <ol>
+          <li>
+            <strong>Game instruction:</strong> The first screen of the game presents the instructions to the player,
+            a text field for player's name, and the Play button for starting the game. The "Play" button should be
+            disabled if the text field is empty.
+          </li>
+          <li>
+            <strong>Game board:</strong> It must present all elements described above in the game screen including
+            score, timer, lives, and the playing area.
+          </li>
+          <li>
+            <strong>Game icon:</strong> which represents the game immediately.
+          </li>
+        </ol>
+
+        <div class="warning-box">
+          <strong>Important:</strong> Develop the initial markup (HTML + CSS) of your game application. Overall screen
+          must be within 1024x1024 pixels.
+        </div>
+
+        <p>
+          Buttons must have active and hover effects. The buttons background in hover state must be
+          <code>#5d96d4</code> and the active state must use <code>#0069d9</code>.
+        </p>
+        <p>
+          The HTML and CSS code must be valid in the W3C standards for HTML5 and CSS3 rules in accordance with the
+          WCAG and standard ARIA (Accessible Rich Internet Applications Suite).
+        </p>
+      </div>
+    </section>
+
+    <!-- Functionalities -->
+    <section id="functionalities">
+      <h2>Game Functionalities</h2>
+
+      <!-- Menu -->
+      <div id="menu">
+        <h3>Menu & Setup</h3>
+        <ul>
+          <li>Show game icon on the top of the screen.</li>
+          <li>Show game instruction in the centre after page is loaded.</li>
+          <li>Show text field for player to input their name.</li>
+          <li>Player can start game after clicking "Play" button at the bottom of game instruction.</li>
+          <li>The "Play" button should be disabled if the text field is empty.</li>
+        </ul>
+      </div>
+
+      <!-- Cursor -->
+      <div id="cursor">
+        <h3>Cursor & Aiming</h3>
+        <ul>
+          <li>Default cursor must be hidden inside the game board.</li>
+          <li>Custom cursor image (scope/crosshair) follows mouse movement inside the game board.</li>
+          <li>Scope image must be centered on mouse position.</li>
+        </ul>
+      </div>
+
+      <!-- Targets -->
+      <div id="targets">
+        <h3>Targets</h3>
+        <ul>
+          <li>Targets (archery board images) spawn at random X positions at the top of the board.</li>
+          <li>Targets fall from top to bottom at constant speed (3 pixels per frame).</li>
+          <li>Target spawn rate: 1 target every 2 seconds.</li>
+          <li>Maximum 5 targets on screen at the same time.</li>
+          <li>Minimum 1 target must always be present on screen.</li>
+        </ul>
+      </div>
+
+      <!-- Scoring -->
+      <div id="scoring">
+        <h3>Scoring System</h3>
+        <table>
+          <tr>
+            <th>Action</th>
+            <th>Score Change</th>
+          </tr>
+          <tr>
+            <td>Initial score</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Click on target (hit)</td>
+            <td>+10 points, target disappears immediately</td>
+          </tr>
+          <tr>
+            <td>Target reaches bottom without being hit</td>
+            <td>-5 points, lose 1 life</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Lives -->
+      <div id="lives">
+        <h3>Lives System</h3>
+        <ul>
+          <li>Player starts with <strong>3 lives</strong> (displayed as heart icons)</li>
+          <li>Lose 1 life when target reaches bottom</li>
+          <li>Game over when lives reach 0</li>
+        </ul>
+      </div>
+
+      <!-- Timer -->
+      <div id="timer">
+        <h3>Timer</h3>
+        <ul>
+          <li>Countdown timer starts at <strong>60 seconds</strong></li>
+          <li>Timer displayed at top of board in MM:SS format</li>
+          <li>Game ends when timer reaches 00:00</li>
+        </ul>
+      </div>
+
+      <!-- Game Over -->
+      <div id="gameover">
+        <h3>Game Over</h3>
+        <p>Game ends when timer reaches 0 OR lives reach 0. Display game over screen with:</p>
+        <ul>
+          <li>Final score</li>
+          <li>High score (saved in localStorage)</li>
+          <li>"New High Score!" message if applicable</li>
+          <li>"Play Again" button to restart</li>
+          <li>"Main Menu" button to return to instructions</li>
+        </ul>
+      </div>
+
+      <!-- Pause -->
+      <div id="pause">
+        <h3>Pause Feature</h3>
+        <ul>
+          <li>Player can pause game by pressing "Space" or clicking "Pause" button</li>
+          <li>Pause screen overlay with "Resume" and "Quit" buttons</li>
+          <li>All animations and timers stop during pause</li>
+        </ul>
+      </div>
+
+      <!-- Requirements -->
+      <div id="requirements">
+        <h3>Additional Requirements</h3>
+        <ul>
+          <li>Your game should work without JavaScript errors or messages shown in the browser console.</li>
+          <li>Maintain your HTML/CSS and JavaScript code organized and clean to facilitate future maintenance.</li>
+          <li>Use correct indentation and comments.</li>
+          <li>Use meaningful variable names and document your code as much as possible so another developer would be
+            able to modify your work in the future.</li>
+          <li>The game needs to work correctly in <strong>Google Chrome</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Instructions -->
+    <section id="instructions">
+      <h2>Instructions for Competitors</h2>
+      <p>
+        The media files are available in the ZIP file. You can modify the supplied files and create new media files
+        to ensure the correct functionality and improve the application.
+      </p>
+
+      <h3>Required Media Files</h3>
+      <ul>
+        <li><code>scope.png</code> - Crosshair/scope cursor image (approximately 50x50 pixels)</li>
+        <li><code>target.png</code> - Archery board target image (approximately 80x80 pixels)</li>
+        <li><code>heart.png</code> - Life indicator icon</li>
+      </ul>
+
+      <h3>File Structure</h3>
+      <pre>
+module_client_side/
+├── design/
+│   ├── province_instructions.png
+│   ├── province_game_board.png
+│   ├── province_game_icon.png
+│   └── source/
+│       └── (design source files: psd, ai, xd, svg)
+├── media/
+│   ├── scope.png
+│   ├── target.png
+│   └── heart.png
+├── index.html
+├── style.css
+└── script.js</pre>
+
+      <div class="highlight-box">
+        Save the working game to the directory on the server named <strong>"module_client_side"</strong>.
+        Be sure that your main file is called <strong>index.html</strong>.
+      </div>
+
+      <p>
+        You are responsible for the time management in your development. If you finalize some tasks you can continue
+        to other tasks.
+      </p>
+    </section>
+
+    <!-- Examples -->
+    <section id="examples">
+      <h2>Example Screenshots</h2>
+
+      <h3>Image 1: Game Instructions Screen</h3>
+      <ul>
+        <li>Game title at top</li>
+        <li>Instructions text in center</li>
+        <li>Name input field</li>
+        <li>Play button (disabled state)</li>
+      </ul>
+
+      <h3>Image 2: Game Board</h3>
+      <ul>
+        <li>Score display (top left)</li>
+        <li>Timer display (top right)</li>
+        <li>Lives/hearts (top center)</li>
+        <li>Falling targets</li>
+        <li>Custom scope cursor</li>
+      </ul>
+
+      <h3>Image 3: Game Over Screen</h3>
+      <ul>
+        <li>"GAME OVER" title</li>
+        <li>Final score</li>
+        <li>High score</li>
+        <li>Play Again / Main Menu buttons</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Scroll Spy Script -->
+  <script>
+    const sections = document.querySelectorAll('section, section div[id]');
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+    function activateLink() {
+      let currentSection = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        
+        if (window.scrollY >= sectionTop - 150) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + currentSection) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', activateLink);
+    window.addEventListener('load', activateLink);
+
+    // Smooth scroll
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</h

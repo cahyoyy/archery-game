@@ -49,7 +49,7 @@ btnPause.addEventListener("click", () => {
 
 // Space key to toggle pause
 window.addEventListener("keydown", (e) => {
-  if (e.key === " " || e.code === "Space") {
+  if (e.key === " " || e.code === "Escape") {
     e.preventDefault();
     if (board.style.display === "none") return;
     if (isGameOver) return;

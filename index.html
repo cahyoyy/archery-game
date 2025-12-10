@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archery Pop</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <!-- Menu -->
+  <div class="menu" id="menu" style="display: flex">
+    <div class="bungkus">
+      <h1>Archery Pop</h1>
+
+      <div class="inst">
+        <ul style="list-style: none; display: flex; flex-direction: column;">
+          <li>Move your mouse to aim the <strong>scope</strong></li>
+          <li><strong>Click</strong> on falling targets to destroy them</li>
+          <li>Each hit gives you <strong>+10 points</strong></li>
+          <li>Missing a target costs <strong>-5 points</strong> and <strong>1 life</strong></li>
+          <li>You have <strong>3 lives</strong> and <strong>60 seconds</strong></li>
+          <li>Press <strong>Space</strong> or click <strong>Pause</strong> to pause the game</li>
+        </ul>
+      </div>
+      <div class="menu-list">
+        <h4 style="padding-bottom: 8px;">Input your name to start the game</h4>
+        <input type="text" id="player-name" placeholder="Input Name" autofocus />
+        <button class="btn-play" type="submit" id="btn-play" style="margin-top: 8px;" disabled>Play</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Board -->
+  <div class="board" id="board" style="display: none">
+    <div class="header-board">
+      <div class="score-board">
+        Score:
+        <br />
+        <span id="score">0</span>
+      </div>
+      <div class="lives-board">
+        Lives:
+        <br />
+        <span id="lives">❤️ ❤️ ❤️</span>
+      </div>
+      <div class="title-board">ARCHERY POP</div>
+      <div class="time-board">
+        Timer:
+        <br />
+        <span id="timer">1:00</span>
+      </div>
+    </div>
+    <canvas id="canvas" width="960" height="600"></canvas>
+    <div class="pause-board">
+      <button class="btn-pause" id="btn-pause">Pause</button>
+    </div>
+  </div>
+
+  <!-- Pause Screen -->
+  <div id="pause-screen" class="screen hidden">
+    <div class="pause-box">
+      <h1>PAUSED</h1>
+      <div class="pause-buttons">
+        <button id="resume-btn" class="btn btn-primary">Resume</button>
+        <button id="quit-btn" class="btn btn-secondary">Quit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Finished Screen (Timer ended, still alive) -->
+  <div id="finished-screen" class="screen hidden">
+    <div class="finished-box">
+      <h1>🎯 Well Done! 🎯</h1>
+      <div class="final-scores">
+        <p>Your Score: <span id="finished-score">0</span></p>
+        <p>High Score: <span id="finished-high-score">0</span></p>
+        <p id="finished-new-highscore" class="hidden">🎉 New High Score! 🎉</p>
+      </div>
+      <div class="finished-buttons">
+        <button id="finished-restart-btn" class="btn btn-primary">Play Again</button>
+        <button id="finished-menu-btn" class="btn btn-secondary">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Over Screen (Lives = 0) -->
+  <div id="gameover-screen" class="screen hidden">
+    <div class="gameover-box">
+      <h1>Game Over!</h1>
+      <div class="final-scores">
+        <p>Your Score: <span id="final-score">0</span></p>
+        <p>High Score: <span id="high-score">0</span></p>
+        <p id="new-highscore" class="hidden">🎉 New High Score! 🎉</p>
+      </div>
+      <div class="gameover-buttons">
+        <button id="restart-btn" class="btn btn-primary">Play Again</button>
+        <button id="menu-btn" class="btn btn-secondary">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./canvas.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>

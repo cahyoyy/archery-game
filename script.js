@@ -2,6 +2,7 @@ const menu = document.getElementById("menu");
 const playerName = document.getElementById("player-name");
 const btnPlay = document.getElementById("btn-play");
 const board = document.getElementById("board");
+const leaderboard = document.getElementById('leaderboard')
 
 const pauseScreen = document.getElementById("pause-screen");
 const btnPause = document.getElementById("btn-pause");

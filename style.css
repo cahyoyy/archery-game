@@ -22,8 +22,9 @@ button {
 
 /* Menu */
 .menu {
-  flex-direction: column;
-  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
   padding-top: 10rem;
 }
 

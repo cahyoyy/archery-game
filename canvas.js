@@ -22,6 +22,7 @@ const heartImg = new Image();
 heartImg.src = "./assets/user-lives-removebg-preview.png";
 
 // Game state
+let currentUsername = "";
 let scoreCount = 0;
 let lives = 3;
 let timeLeft = 60;
@@ -293,6 +294,7 @@ function gameLoop() {
 
 // Start game
 function startGame() {
+  currentPlayerName = playerName.value || "Player";
   scoreCount = 0;
   lives = 3;
   timeLeft = 60;

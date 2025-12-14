@@ -10,7 +10,7 @@
 
 <body>
   <!-- Menu -->
-  <div class="menu" id="menu" style="display: flex">
+  <div class="menu" id="menu">
     <div class="bungkus">
       <h1>Archery Pop</h1>
 
@@ -29,6 +29,12 @@
         <input type="text" id="player-name" placeholder="Input Name" autofocus />
         <button class="btn-play" type="submit" id="btn-play" style="margin-top: 8px;" disabled>Play</button>
       </div>
+    </div>
+    <div id="leaderboard">
+      <h2>Leaderboard</h2>
+      <ol id="leaderboard-list">
+        <!-- Leaderboard entries will be dynamically added here -->
+      </ol>
     </div>
   </div>
 
@@ -103,6 +109,7 @@
 
   <script src="./canvas.js"></script>
   <script src="./script.js"></script>
+  <script src="./leaderboard.js"></script>
 </body>
 
 </html>
